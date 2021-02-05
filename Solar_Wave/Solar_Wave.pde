@@ -1,6 +1,12 @@
 //Juego xd
+PImage im1;
+
 void setup(){
-  size(1000,600);
+  im1=loadImage("Iglu.png");
+  size(800,600);
+ 
 }
 void draw(){
+  background(im1);
+
 }
