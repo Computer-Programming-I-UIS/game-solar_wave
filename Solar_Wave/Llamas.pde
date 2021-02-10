@@ -19,7 +19,7 @@ class Llamas {
 
   void caer() {
     y = y + speedY;
-   // speedY = speedY +0.1;
+    // speedY = speedY +0.1;
     if (y > height) {
 
       y= random(-100, -80);
@@ -34,21 +34,19 @@ class Llamas {
     if (peligro)
       fill(#44FAEC);
     else 
-      noFill();
+    noFill();
     ellipse(x+radio, y+radio, 30, 30);
   }
 
   void colision (mini osoEnPeligro) {
     float d1= dist(this.x+this.radio, this.y+this.radio, osoEnPeligro.center.x+osoEnPeligro.radio, osoEnPeligro.center.y+osoEnPeligro.radio);
-    //text(d1, 100, 550);
+    text(d1, 100, 550);
     if (d1 < radio + osoEnPeligro.radio) { 
 
       peligro = true;
-      image(im2,osoEnPeligro.center.x,osoEnPeligro.center.y);
+      image(im2, osoEnPeligro.center.x, osoEnPeligro.center.y);
     } else 
     peligro = false;
-    image(im1,osoEnPeligro.center.x,osoEnPeligro.center.y+osoEnPeligro.radio);
-
-    
+    image(im1, osoEnPeligro.center.x, osoEnPeligro.center.y+osoEnPeligro.radio);
   }
 }
