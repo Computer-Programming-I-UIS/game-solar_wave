@@ -9,42 +9,46 @@ class Llamas {
   float px;
   int r1=30;
   int r2=50;
+  int radio = 25;
+  boolean peligro = false;
   //centro = new PVector (x, y);
 
   Llamas(PImage picllamas  ) {
     llamitas =picllamas;
-    oso = new mini(im1, 390, 450);
   }
 
   void caer() {
     y = y + speedY;
-    speedY = speedY +0.1;
+   // speedY = speedY +0.1;
     if (y > height) {
 
       y= random(-100, -80);
+      x=random(width);
       speedY= map(r, 0, 20, 4, 10);
     }
   }
   void display() {
     image(llamitas, x, y);
-    stroke(10);
+    noStroke();
     ellipseMode(CENTER);
-    ellipse(x+25, y+26, 30, 30);
+    if (peligro)
+      fill(#44FAEC);
+    else 
+      noFill();
+    ellipse(x+radio, y+radio, 30, 30);
   }
 
-  void colision () {
-    float d1= dist(x+25, y+26,oso.center.x, oso.center.y);
-  if (d1 < r1+r2 ) { 
-    fill(#44FAEC);
+  void colision (mini osoEnPeligro) {
+    float d1= dist(this.x+this.radio, this.y+this.radio, osoEnPeligro.center.x+osoEnPeligro.radio, osoEnPeligro.center.y+osoEnPeligro.radio);
+    //text(d1, 100, 550);
+    if (d1 < radio + osoEnPeligro.radio) { 
 
-    }
-    
-   /*float distancia =sqrt (((x+25)- oso.center.x)((x+25)- oso.center.x)) +(((y+26)-oso.center.y)*((y+26)-oso.center.y));
-    if ( distancia < r1 + r2 ) {
-    //Colisión detectada
-    fill(#44FAEC);
-  }*/
-    //println(oso.center.x);
+      peligro = true;
+      image(im2,osoEnPeligro.center.x,osoEnPeligro.center.y);
+    } else 
+    peligro = false;
+    image(im1,osoEnPeligro.center.x,osoEnPeligro.center.y+osoEnPeligro.radio);
+
     
   }
 }
