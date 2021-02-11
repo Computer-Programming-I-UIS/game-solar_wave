@@ -1,10 +1,9 @@
 //Juego xd
 mini oso;
-Llamas[] llamitas = new Llamas[8];
-PImage fondom1, fondop, sol, fondogo;
+Llamas[] llamitas = new Llamas[7];
+PImage fondom1, fondop, sol, fondogo, pezg;
 int  velocidadOso;
 boolean colision = false; 
-
 int numJuego = 0;
 
 float x=0;
@@ -14,6 +13,7 @@ void setup() {
   fondom1 = loadImage ("Iglu.png");
   sol = loadImage ("sol.png");
   fondogo = loadImage ("fondo game over.png");
+  pezg = loadImage("pez gana.png");
   //fondop= loadImage("Fondop.png"); 
   //oso = new mini(im1, 390, 450);
   //PImage llamitas= new Llamas(loadImage ("llamitas.png"),80,posE,pos);
@@ -35,13 +35,16 @@ void draw() {
     jugando();
     break;
   case 1:
-    background(fondogo); // fondo negro
+    background(fondogo);
+   // fondo negro
     /* textAlign(CENTER);
      fill(255);
      text("GAME OVER", width/2, height/2);*/
     break;
   case 2:
-    // Aquí pondría mi juego 2, si tuviese uno :c
+   background(#BADDF2);
+  // pez.resize(300,300);
+   image(pezg,(width/2)-150,(height/2)-150); // Aquí pondría mi juego 2, si tuviese uno :c
     break;
   default:
 
@@ -51,6 +54,7 @@ void draw() {
 
 void jugando() {
   background(fondom1);
+  //float s= map(x, 0, 60, 0, width+20);
   for ( int i = 0; i <llamitas.length; i++) {
     llamitas[i].caer();
     llamitas[i].display();
@@ -66,12 +70,13 @@ void jugando() {
   fill(s/2, 255, 0);
   rect(0, 0, s, height/12);
   image(sol, s, 2);
-  /*if (s>=width+20) { //se acaba el tiempo
-   background(fondop);
-   }*/
+ if (s>=width+20) { //se acaba el tiempo
+      numJuego=2;
+ }
+ if(s<width+20){
   oso.mostrar();
-  oso.move();
-
+  oso.move();  
+ }
   //println(oso.est);
 
   /*
@@ -81,14 +86,10 @@ void jugando() {
    break;
    case 1: //
    draw_miniGame1();
-   break;
-   
-   
-   }
-   
+   break;  
+   }   
    */
 }
-
 void keyPressed () {
   if (keyCode==RIGHT) {
     oso.cambio.x= velocidadOso;
