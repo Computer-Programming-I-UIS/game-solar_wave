@@ -1,25 +1,45 @@
 class mini { //Clase 
-  PImage im3;
+  PImage im1, im2;
   PVector center, cambio;  
   int alto, ancho;
   int radio = 40;
-  mini (PImage oso, int x, int y)
+  boolean est=true;
+  mini ( int x, int y)
   {
-    im3=oso;
-    alto=im3.height;
-    ancho=im3.width;
+    im1 = loadImage("osito mini.png");
+    im2 = loadImage ("osito quemado.png");
+    alto=im1.height;
+    ancho=im1.width;
     center = new PVector (x, y);
     cambio = new PVector (0, 0);
-   
   }
+  
+  /*//getters, "obtenedor"
+  boolean getEst(){
+    return est;
+  }*/
+  //Setters, "colocador"
+  void setEst(boolean newEst) {
+    est = newEst;
+  }
+  
   void mostrar () {
-    image(im1, center.x, center.y);
-    fill(0);
-    text(center.x,740,550);
-    text(center.y,670,550);
-    stroke(10);
-    noFill();
-    ellipse(center.x+radio,center.y+radio,80,80);
+    // se pregunta el estado del osito
+    // si está vivo 
+    if (est) {
+      //dibujar osito vivo
+      image(im1, center.x, center.y);
+      noStroke();
+      noFill();
+     // ellipse(center.x+radio, center.y+radio, 80, 80);
+    } else {
+      //osito muerto
+      frameRate(3);
+      image(im2,center.x,center.y);
+    }
+    //fill(0);
+    //text(center.x,740,550);
+    //text(center.y,670,550);
   }
   void move()
   {

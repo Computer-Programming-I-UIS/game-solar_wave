@@ -17,6 +17,10 @@ class Llamas {
     llamitas =picllamas;
   }
 
+  boolean getPeligro() {
+    return peligro;
+  }
+
   void caer() {
     y = y + speedY;
     // speedY = speedY +0.1;
@@ -40,13 +44,10 @@ class Llamas {
 
   void colision (mini osoEnPeligro) {
     float d1= dist(this.x+this.radio, this.y+this.radio, osoEnPeligro.center.x+osoEnPeligro.radio, osoEnPeligro.center.y+osoEnPeligro.radio);
-    text(d1, 100, 550);
+    //text(d1, 100, 550);
     if (d1 < radio + osoEnPeligro.radio) { 
-
       peligro = true;
-      image(im2, osoEnPeligro.center.x, osoEnPeligro.center.y);
     } else 
     peligro = false;
-    image(im1, osoEnPeligro.center.x, osoEnPeligro.center.y+osoEnPeligro.radio);
   }
 }
