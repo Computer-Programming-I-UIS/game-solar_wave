@@ -43,9 +43,15 @@ void draw() {
     break;
   case 2:
    background(#BADDF2);
-  // pez.resize(300,300);
-   image(pezg,(width/2)-150,(height/2)-150); // Aquí pondría mi juego 2, si tuviese uno :c
+   image(pezg,(width/2)-200,(height/2)-300); 
+   textSize(50);
+   fill(0);
+   textAlign(CENTER);
+   text("You earned", width/2, (height/2)+50);
+   text("a fish", width/2, (height/2)+100);
     break;
+   case 3:
+   // Aquí pondría mi juego 2, si tuviese uno :c
   default:
 
     break;

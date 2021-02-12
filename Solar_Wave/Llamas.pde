@@ -1,7 +1,7 @@
 class Llamas {
   float x=random(width);
   float y=random(-500, -10);
-  float speedY=random(3, 8);
+  float speedY=random(3, 5);
   PVector centro;
   PImage llamitas;
   float r= random (0, 20);
