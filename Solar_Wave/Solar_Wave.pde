@@ -2,7 +2,7 @@
 mini oso;
 osop principal;
 Llamas[] llamitas = new Llamas[7];
-PImage fondom1, fondop, sol, fondogo, pezg;
+PImage fondom1, fondop, sol, fondogo, pezg, fondop2;
 int  velocidadOso;
 boolean colision = false; 
 int numJuego = 0;
@@ -15,8 +15,8 @@ void setup() {
   sol = loadImage ("sol.png");
   fondogo = loadImage ("fondo game over.png");
   pezg = loadImage("pez gana.png");
-  fondop= loadImage("fprincipal.png");
-  //fondop= loadImage("Fondop.png"); 
+  fondop= loadImage("fondoj-1.png");
+  fondop2=loadImage("fondoj-2.png");
 
   for ( int i = 0; i <llamitas.length; i++) {
     llamitas[i]= new Llamas(loadImage ("llamitas.png"));
@@ -85,24 +85,26 @@ void jugando() {
     oso.move();
   }
   //println(oso.est);
-
-  }
-    void juegoprin() {
-    background(fondop);
-    principal.dibujar();
-    }
-  /*
+}
+void juegoprin() {
+  background(fondop);
+  principal.dibujar();
+  principal.jump();
+  principal.land();
+}
+/*
   switch(juego) {
-   case 0: //
-   draw_miniGame1();
-   break;
-   case 1: //
-   draw_miniGame1();
-   break;  
-   }   
-   */
+ case 0: //
+ draw_miniGame1();
+ break;
+ case 1: //
+ draw_miniGame1();
+ break;  
+ }   
+ */
 
 void keyPressed () {
+   principal.keyPressed();
   if (keyCode==RIGHT) {
     oso.cambio.x= velocidadOso;
   }
