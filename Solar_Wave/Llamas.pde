@@ -11,7 +11,6 @@ class Llamas {
   int r2=50;
   int radio = 25;
   boolean peligro = false;
-  //centro = new PVector (x, y);
 
   Llamas(PImage picllamas  ) {
     llamitas =picllamas;
@@ -23,7 +22,6 @@ class Llamas {
 
   void caer() {
     y = y + speedY;
-    // speedY = speedY +0.1;
     if (y > height) {
 
       y= random(-100, -80);
@@ -31,20 +29,19 @@ class Llamas {
       speedY= map(r, 0, 20, 4, 10);
     }
   }
-  void display() {
+ void display() {
     image(llamitas, x, y);
-    noStroke();
+   /* noStroke(); //Opcion de borrar
     ellipseMode(CENTER);
     if (peligro)
       fill(#44FAEC);
     else 
     noFill();
-    ellipse(x+radio, y+radio, 30, 30);
+    ellipse(x+radio, y+radio, 30, 30);*/
   }
 
   void colision (mini osoEnPeligro) {
     float d1= dist(this.x+this.radio, this.y+this.radio, osoEnPeligro.center.x+osoEnPeligro.radio, osoEnPeligro.center.y+osoEnPeligro.radio);
-    //text(d1, 100, 550);
     if (d1 < radio + osoEnPeligro.radio) { 
       peligro = true;
     } else 

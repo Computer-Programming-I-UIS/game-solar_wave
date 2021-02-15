@@ -14,10 +14,6 @@ class mini { //Clase
     cambio = new PVector (0, 0);
   }
   
-  /*//getters, "obtenedor"
-  boolean getEst(){
-    return est;
-  }*/
   //Setters, "colocador"
   void setEst(boolean newEst) {
     est = newEst;
@@ -29,17 +25,11 @@ class mini { //Clase
     if (est) {
       //dibujar osito vivo
       image(im1, center.x, center.y);
-      noStroke();
-      noFill();
-     // ellipse(center.x+radio, center.y+radio, 80, 80);
     } else {
       //osito muerto
       frameRate(3);
       image(im2,center.x,center.y);
     }
-    //fill(0);
-    //text(center.x,740,550);
-    //text(center.y,670,550);
   }
   void move()
   {
