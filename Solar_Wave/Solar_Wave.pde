@@ -2,7 +2,7 @@
 mini oso;
 osop principal;
 Llamas[] llamitas = new Llamas[1];
-PImage fondom1, fondop, sol, fondogo, pezg, fondop2, menu, titulo;
+PImage fondom1, fondop, sol, fondogo, pezg, fondop2, menu, titulo, fondop3, iglu;
 int  velocidadOso;
 boolean colision = false; 
 int numJuego = 0;
@@ -17,15 +17,17 @@ void setup() {
   pezg = loadImage("pez gana.png");
   fondop= loadImage("fondoj-1.png");
   fondop2=loadImage("fondoj-2.png");
+  fondop3=loadImage("fondoj-3.png");
   menu= loadImage("fmenu.png");
   titulo = loadImage("swave.png");
+  iglu=loadImage("iglujuego.png");
   for ( int i = 0; i <llamitas.length; i++) {
-  llamitas[i]= new Llamas(loadImage ("llamitas.png"));
-}
-oso = new mini(390, 450);
-velocidadOso=4;
+    llamitas[i]= new Llamas(loadImage ("llamitas.png"));
+  }
+  oso = new mini(390, 450);
+  velocidadOso=4;
 
-principal = new osop (300, 400);
+  principal = new osop (300, 400);
 }
 
 void draw() {
@@ -55,7 +57,7 @@ void draw() {
 }
 void menu() {
   background(menu);
-  image(titulo,150,-10);
+  image(titulo, 150, -10);
   textSize(20);
   stroke(0);  
   fill(#FEFF0F);
@@ -84,7 +86,15 @@ void menu() {
    }*/
 }
 void juegoprin() {
-  background(fondop);
+  //background(fondop);
+  x = constrain(x, 0, 2800);   
+  image(fondop, -x, 0);
+  x=frameCount;
+  //frameRate(5);
+  image(fondop2, -x+800, 0);
+  image(fondop3, -x+1600, 0);
+  image(fondop2, -x+2400, 0);
+  image(iglu, -x+2000, 150);
   principal.dibujar();
   principal.jump();
   principal.land();
