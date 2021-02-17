@@ -2,7 +2,7 @@ import ddf.minim.*;
 //Juego xd
 mini oso;
 osop principal;
-Llamas[] llamitas = new Llamas[1];
+Llamas[] llamitas = new Llamas[7];
 ArrayList<Obstaculo> llamitasP= new ArrayList<Obstaculo>();
 PImage fondom1, fondop, sol, fondogo, pezg, fondop2, menu, titulo, fondop3, iglu, osop, fondoc, pan, map, c1, c2;
 int  velocidadOso;
