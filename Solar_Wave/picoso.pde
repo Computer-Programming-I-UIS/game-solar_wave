@@ -7,7 +7,8 @@ class osop {
   int velY=0, velX=2;
   float px, py, baseY;
   float altura=0;
-
+int r=50; 
+  float radhit=50.01;
   osop( int Px, int Py) {
     px=Px;
     baseY=Py;

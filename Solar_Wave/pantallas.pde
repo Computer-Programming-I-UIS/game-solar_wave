@@ -4,7 +4,7 @@ void h1() {
   fill(255);
   textSize(18);
   textAlign(CENTER);
-  text("¡KEEP YOURSELF!, follow the map", 400, 230);
+  text("¡SAVE YOURSELF!, follow the map", 400, 230);
   text(" and go to the 'safe place' ", 400, 260);
   stroke(0);  
   fill(#FEFF0F);
@@ -63,26 +63,32 @@ void menu() {
 }
 void juegoprin() {
   //background(fondop);
-  x = constrain(x, 0, 2800);   
-  image(fondop, -x, 0);
-  x++;
-  //frameRate(5);
-  println("x = " + str(x));
-  image(fondop2, -x+800, 0);
-  image(fondop3, -x+1600, 0);
-  image(fondop2, -x+2400, 0);
-  image(iglu, -x+2000, 150);
+  X= constrain(X, 0, 2800);   
+  image(fondop, -X, 0);
+  X++;
+  //X=frameCount;
+  pxi=-X+1600;
+  //println("x = " + str(x));
+  image(fondop2, -X+800, 0);
+  image(fondop3, -X+1600, 0);
+  image(fondop2, -X+2400, 0);
+  image(iglu, pxi, pyi);
+  for ( int j = llamitasP.size()-1; j >=0; j--) {
+    Obstaculo o = llamitasP.get(j);
+    o.move();
+    o.dibujar();
+    //o.hit(principal);
+  }
+  if (random(30)<10 && frameCount % 60==0) {
+    llamitasP.add(new Obstaculo ());
+  }
+  pasar(principal);
   principal.dibujar();
   principal.jump();
   principal.land();
-  stroke(0);  //no dibujar botones, porque va el iglu
-  fill(#D108FF);
-  square(735, 300, 50); 
-  if (mousePressed && mouseX>735 && mouseX<785 && mouseY<350 && mouseY>300) { 
-    numJuego=3;
 
-    x = 0;
-  }
+
+  x = 0;
 }
 void jugando() {
   background(fondom1);
@@ -171,6 +177,14 @@ void keyPressed () {
     oso.cambio.x=- velocidadOso;
   }
 }
+void pasar (osop cambio) {
+
+  float d= dist(pxi+rad, pyi+rad, cambio.px+cambio.r, cambio.py+cambio.r);
+  if (d < rad + cambio.r) { 
+    numJuego=3;
+  }
+}
+
 void creditos() {
   background(fondoc);
   image(osop, 100, 450);

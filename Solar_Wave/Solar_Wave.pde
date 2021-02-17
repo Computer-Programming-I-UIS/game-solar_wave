@@ -3,13 +3,15 @@ import ddf.minim.*;
 mini oso;
 osop principal;
 Llamas[] llamitas = new Llamas[1];
+ArrayList<Obstaculo> llamitasP= new ArrayList<Obstaculo>();
 PImage fondom1, fondop, sol, fondogo, pezg, fondop2, menu, titulo, fondop3, iglu, osop, fondoc, pan, map, c1, c2;
 int  velocidadOso;
-boolean colision = false; 
 int numJuego = 0;
 Minim minim;
 music a1, a2, a3, a4, a5;
 float x=0;
+int X ;  
+float pxi, pyi=150, rad=150;
 void setup() {
   size(800, 600);
   //frameRate(5);
