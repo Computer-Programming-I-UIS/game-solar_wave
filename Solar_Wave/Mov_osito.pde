@@ -27,7 +27,9 @@ class mini { //Clase
       image(im1, center.x, center.y);
     } else {
       //osito muerto
-      frameRate(3);
+      frameRate(1);
+      
+      
       image(im2,center.x,center.y);
     }
   }

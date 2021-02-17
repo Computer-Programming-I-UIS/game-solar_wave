@@ -1,16 +1,33 @@
+import ddf.minim.*;
 //Juego xd
 mini oso;
 osop principal;
 Llamas[] llamitas = new Llamas[1];
-PImage fondom1, fondop, sol, fondogo, pezg, fondop2, menu, titulo, fondop3, iglu;
+PImage fondom1, fondop, sol, fondogo, pezg, fondop2, menu, titulo, fondop3, iglu, osop, fondoc, pan, map, c1, c2;
 int  velocidadOso;
 boolean colision = false; 
 int numJuego = 0;
-
+Minim minim;
+music a1, a2, a3, a4, a5;
 float x=0;
 void setup() {
   size(800, 600);
   //frameRate(5);
+  minim = new Minim(this);
+  a1 = new music(minim, "historia.mp3");
+  a2 = new music(minim, "juegop.mp3");
+  a3 = new music(minim, "minijuego.mp3");
+  a4 = new music(minim, "gameo.mp3");
+  a5 = new music(minim, "ganar.mp3");
+  /*if(numJuego==0){
+   a1.start();
+   }
+   if(numJuego!=0){
+   a1.stop();
+   }*/
+  /*a3.start();
+   a4.start();
+   a5.start();*/
   fondom1 = loadImage("Iglu.png");
   sol = loadImage("sol.png");
   fondogo = loadImage ("fondo game over.png");
@@ -21,6 +38,12 @@ void setup() {
   menu= loadImage("fmenu.png");
   titulo = loadImage("swave.png");
   iglu=loadImage("iglujuego.png");
+  osop = loadImage("Oso prin00.png");
+  fondoc = loadImage ("Fondop.png");
+  pan = loadImage("pantallita.png");
+  map=loadImage("mapita.png");
+  c1=loadImage("pegi3.png");
+  c2=loadImage("pegit.png");
   for ( int i = 0; i <llamitas.length; i++) {
     llamitas[i]= new Llamas(loadImage ("llamitas.png"));
   }
@@ -31,154 +54,51 @@ void setup() {
 }
 
 void draw() {
+
   switch (numJuego) {
   case 0:
-    menu();
+    h1();
     break;
-  case 1:
-    juegoprin();
-    break;
-  case 2:
-    jugando();
-    break;
-  case 3:
-    gameover(oso);
-    break;
-  case 4:
-    win();
-    break;
-  case 5: 
+  case 7:
+    h2();
     // Aquí pondría mi juego 2, si tuviese uno :c
     break;
+  case 1:
+    menu();
+    a1.start();
+    //a2.stop();
+    break;
+  case 2:
+    frameRate(60);
+    juegoprin();
+    //  text("Fish",750,100);
+    //p=round(puntaje+=0.1);
+    //a1.stop();
+    //a2.start();
+    // a2.start();
+    break;
+  case 3:
+    frameRate(60);
+    jugando();
+    // a3.start();
+    //a1.stop();
+    break;
+  case 4:
+    frameRate(60);
+    gameover(oso);
+    break;
+  case 5: 
+    win();
+    break;
+  case 6:
+    creditos();
+    break;
+  //case 7:
+    //h2();
+    // Aquí pondría mi juego 2, si tuviese uno :c
+    //break;
   default:
 
     break;
-  }
-}
-void menu() {
-  background(menu);
-  image(titulo, 150, -10);
-  textSize(20);
-  stroke(0);  
-  fill(#FEFF0F);
-  rect(350, 352, 100, 40, 7); //Cuadro RESET
-  fill(0);
-  textAlign(CENTER);
-  text("PLAY", 400, 380);
-  if (mousePressed && mouseX>350 && mouseX<450 && mouseY<392 && mouseY>352) { //Botón de reinicio
-    numJuego=1;
-  }
-  /* fill(#FFC00F);
-   rect((width/2)-70, (height/2)+102, 140, 40, 7); //Cuadro RESET
-   fill(0);
-   textAlign(CENTER);
-   text("HOW TO PLAY", 400, 430);
-   if (mousePressed && mouseX>735 && mouseX<785 && mouseY<420 && mouseY>370) { //Botón de reinicio
-   numJuego=1;
-   }
-   fill(#FF370F);
-   rect((width/2)-50, (height/2)+152, 100, 40, 7); //Cuadro RESET
-   fill(0);
-   textAlign(CENTER);
-   text("CREDITS", 400, 480);
-   if (mousePressed && mouseX>735 && mouseX<785 && mouseY<420 && mouseY>370) { //Botón de reinicio
-   numJuego=1;
-   }*/
-}
-void juegoprin() {
-  //background(fondop);
-  x = constrain(x, 0, 2800);   
-  image(fondop, -x, 0);
-  x=frameCount;
-  //frameRate(5);
-  image(fondop2, -x+800, 0);
-  image(fondop3, -x+1600, 0);
-  image(fondop2, -x+2400, 0);
-  image(iglu, -x+2000, 150);
-  principal.dibujar();
-  principal.jump();
-  principal.land();
-  stroke(0);  //no dibujar botones, porque va el iglu
-  fill(#D108FF);
-  square(735, 300, 50); //Cuadro RESET
-  if (mousePressed && mouseX>735 && mouseX<785 && mouseY<350 && mouseY>300) { //Botón de reinicio
-    numJuego=2;
-  }
-}
-void jugando() {
-  background(fondom1);
-  oso.setEst(true);
-  for ( int i = 0; i <llamitas.length; i++) {
-    llamitas[i].caer();
-    llamitas[i].display();
-    llamitas[i].colision(oso);
-    if (llamitas[i].getPeligro()) {//Hubo una colisión
-      numJuego = 3;
-      oso.setEst(false);
-    }
-  }
-  x+=0.1;
-  float s= map(x, 0, 60, 0, width+20);
-  noStroke();
-  fill(s/2, 255, 0);
-  rect(0, 0, s, height/12);
-  image(sol, s, 2);
-  if (s>=width+20) { //se acaba el tiempo
-    numJuego=4;
-  }
-  if (s<width+20) {
-    oso.mostrar();
-    oso.move();
-  }
-  //println(oso.est);
-}
-
-void gameover(mini osoMuerto) {
-  background(fondogo);
-  textSize(20);
-  stroke(0);  //Se dibujan los botones y los cuadros que se encuentran en la interfaz
-  fill(255);
-  square(280, 320, 200);
-  fill(0);
-  text("¿PLAY AGAIN?", 310, 360);
-  //Cuadro YES
-  fill(#00F025);
-  rect(310, 450, 40, 20, 7);
-  textSize(15);
-  text("YES", 315, 430);
-  //Cuadro NO
-  fill(#F00014);
-  rect(410, 450, 40, 20, 7);
-  textSize(15);
-  text("NO", 420, 430);
-
-  if (mousePressed && mouseX>310 && mouseX<350 && mouseY<470 && mouseY>450) { //Botón de YES
-    numJuego=1;
-    osoMuerto.center.x=width/2;
-  }
-  if (mousePressed && mouseX>410 && mouseX<450 && mouseY<470 && mouseY>450) { //Botón de NO
-    numJuego=0;
-  }
-}
-void win() {
-  background(#BADDF2);
-  image(pezg, (width/2)-200, (height/2)-300); 
-  textSize(50);
-  fill(0);
-  textAlign(CENTER);
-  text("You earned", width/2, (height/2)+50);
-  text("a fish", width/2, (height/2)+100);
-  stroke(0);  //Se dibujan los botones y los cuadros que se encuentran en la interfaz
-  fill(#D108FF);
-  square(735, 270, 50); //Cuadro RESET
-  ///numJuego=0;
-}
-void keyPressed () {
-  principal.keyPressed();
-  if (keyCode==RIGHT) {
-    oso.cambio.x= velocidadOso;
-  }
-  if (keyCode==LEFT) {
-    oso.cambio.x=- velocidadOso;
   }
 }
