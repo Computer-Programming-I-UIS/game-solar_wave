@@ -33,7 +33,10 @@ Para todo público
 
 ![mini](mini1.png)
 
+## Recomendaciones:
+Descargar la librería 'minim' para vivir la experiencia musical del juego.
+
 ## Créditos
 1. Todo el contenido visual y de programación fue elaborado por las creadoras.
-2. Orientación en programación: Alex Mantilla (Tutor de Programación)
+2. Orientación en programación: Alex Mantilla (Tutor de Programación).
 3. Contenido musical: Patrick de Arteaga patrickdearteaga.com
