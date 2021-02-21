@@ -8,7 +8,7 @@ PImage fondom1, fondop, sol, fondogo, pezg, fondop2, menu, titulo, fondop3, iglu
 int  velocidadOso;
 int numJuego = 0;
 Minim minim;
-music a1, a2, a3, a4, a5;
+music miMusica;
 float x=0;
 int X ;  
 float pxi, pyi=150, rad=150;
@@ -16,11 +16,9 @@ void setup() {
   size(800, 600);
   //frameRate(5);
   minim = new Minim(this);
-  a1 = new music(minim, "historia.mp3");
-  a2 = new music(minim, "juegop.mp3");
-  a3 = new music(minim, "minijuego.mp3");
-  a4 = new music(minim, "gameo.mp3");
-  a5 = new music(minim, "ganar.mp3");
+  miMusica = new music(minim);
+
+
   /*if(numJuego==0){
    a1.start();
    }
@@ -57,6 +55,7 @@ void setup() {
 
 void draw() {
 
+  miMusica.start();
   switch (numJuego) {
   case 0:
     h1();
@@ -67,7 +66,6 @@ void draw() {
     break;
   case 1:
     menu();
-    a1.start();
     //a2.stop();
     break;
   case 2:
@@ -75,9 +73,6 @@ void draw() {
     juegoprin();
     //  text("Fish",750,100);
     //p=round(puntaje+=0.1);
-    //a1.stop();
-    //a2.start();
-    // a2.start();
     break;
   case 3:
     frameRate(60);
@@ -95,7 +90,7 @@ void draw() {
   case 6:
     creditos();
     break;
-  //case 7:
+    //case 7:
     //h2();
     // Aquí pondría mi juego 2, si tuviese uno :c
     //break;

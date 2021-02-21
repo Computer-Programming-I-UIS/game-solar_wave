@@ -12,8 +12,9 @@ void h1() {
   textSize(20);
   fill(0);
   text("NEXT", 700, 508);
-  if (mousePressed && mouseX>650 && mouseX<750 && mouseY<520 && mouseY>480) { //Botón de NO
+  if (mousePressed && mouseX>650 && mouseX<750 && mouseY<520 && mouseY>480) { //Botón de NEXT
     numJuego=7;
+    mousePressed = false;
   }
 }
 void h2() {
@@ -24,10 +25,15 @@ void h2() {
   rect(650, 540, 100, 40, 7);
   textSize(20);
   fill(0);
-  text("NEXT", 700, 565);
-  if (mousePressed && mouseX>650 && mouseX<750 && mouseY<580 && mouseY>540) { //Botón de NO
-    numJuego=1;
+  text("NEXT", 700, 508);
+  if (mousePressed && mouseX>650 && mouseX<750 && mouseY<520 && mouseY>480) { //Botón de NEXT
+    numJuego = 1;
+    mousePressed = false;
   }
+  //text("NEXT", 700, 565);
+  //if (mousePressed && mouseX>650 && mouseX<750 && mouseY<580 && mouseY>540) { //Botón de NEXT
+  //  numJuego=1;
+  //}
 }
 void menu() {
   background(menu);
@@ -145,6 +151,11 @@ void gameover(mini osoMuerto) {
     osoMuerto.center.x=width/2;
     numJuego=2;
     x = 0;
+    principal.reset();
+    X = 0;
+    for(int i = 0; i < 7; i++){
+      llamitas[i].reset();
+    }
   }
   if (mousePressed && mouseX>410 && mouseX<450 && mouseY<470 && mouseY>450) { //Botón de NO
     numJuego=1;
@@ -183,6 +194,7 @@ void pasar (osop cambio) {
   if (d < rad + cambio.r) { 
     numJuego=3;
   }
+  
 }
 
 void creditos() {

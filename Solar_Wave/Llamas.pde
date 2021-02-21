@@ -39,6 +39,11 @@ class Llamas {
     noFill();
     ellipse(x+radio, y+radio, 30, 30);*/
   }
+  
+  void reset() {
+    
+    y=random(-500, -10);
+  }
 
   void colision (mini osoEnPeligro) {
     float d1= dist(this.x+this.radio, this.y+this.radio, osoEnPeligro.center.x+osoEnPeligro.radio, osoEnPeligro.center.y+osoEnPeligro.radio);
