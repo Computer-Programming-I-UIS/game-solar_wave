@@ -6,13 +6,13 @@ class osop {
   PImage[] picoso = new PImage[totalFrames];
   boolean canJump=true, isJumping=false, osopmov=true;
   int velY=0, velX=2;
-  float px, py, baseY;
+  float px, py, baseY, pxo, pyo;
   float altura=0;
-  int r=50; 
+  int r=75; 
   float radhit=50.01;
   float px_inicial, py_inicial;
-  
-  
+
+
   // Constructor
   osop( int Px, int Py) {
     px = Px;
@@ -26,10 +26,12 @@ class osop {
       picoso[j] = loadImage(osoprin);
     }
   }
-  
+
   // Métodos
   void dibujar() { // Called each frame
-    image(picoso[currentFrame], px-300, py+50);
+    pxo=px-300;
+    pyo=py+50;
+    image(picoso[currentFrame],pxo, pyo);
     cntFrame++;
     if (cntFrame == frameDivisor) { // called each 'frameDivisor' frames
       currentFrame = (currentFrame +1) % picoso.length;
@@ -43,7 +45,7 @@ class osop {
     if (canJump) {
       canJump=false;
       isJumping=true;
-      velY=-20;
+      velY=-27;
       altura=1;
     }
   }
@@ -58,12 +60,12 @@ class osop {
       canJump=true;
     }
   }
-  
+
   void reset() {
     px = px_inicial;
     py = py_inicial;
   }
-  
+
   void keyPressed() {
     if (key == ' ') {
       jump();

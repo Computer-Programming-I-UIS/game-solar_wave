@@ -190,7 +190,7 @@ void keyPressed () {
 }
 void pasar (osop cambio) {
 
-  float d= dist(pxi+rad, pyi+rad, cambio.px+cambio.r, cambio.py+cambio.r);
+  float d= dist(pxi+rad, pyi+rad, cambio.pxo+cambio.r, cambio.pyo+cambio.r);
   if (d < rad + cambio.r) { 
     numJuego=3;
   }

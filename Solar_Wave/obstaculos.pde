@@ -3,10 +3,8 @@ class Obstaculo {
   float pX=width;
   float pY=500;
   PImage fueguitos;
-  //float w=40;
   float velObs=3;
-  int R=25;
-  float Rad=25.01;
+  float R=25;
   //por si lo necesito 
   boolean hits =false;
   Obstaculo() {
@@ -25,11 +23,11 @@ class Obstaculo {
     ellipse(pX+20, pY+35, 30, 30);*/
   }
 
-  /*void hit(osop hit) {
-    float D= dist(pX+Rad, pY+Rad, hit.px+hit.radhit, hit.py+hit.radhit);
-    if (D < Rad+ hit.radhit) { 
-      numJuego=3;
+  void hit(osop hit) {
+    float D= dist(pX+R, pY+R, hit.pxo+hit.r, hit.pyo+hit.r);
+    if (D < R + hit.r) { 
+      numJuego=4;
       
     }
-  }*/
+  }
 }

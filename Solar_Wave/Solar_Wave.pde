@@ -11,7 +11,7 @@ Minim minim;
 music miMusica;
 float x=0;
 int X ;  
-float pxi, pyi=150, rad=150;
+float pxi, pyi=150, rad=290;
 void setup() {
   size(800, 600);
   //frameRate(5);
