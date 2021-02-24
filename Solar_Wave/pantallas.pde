@@ -22,7 +22,7 @@ void h2() {
   image(map, 180, 150);
   stroke(0);  
   fill(#FEFF0F);
-  rect(650, 540, 100, 40, 7);
+  rect(650, 480, 100, 40, 7);
   textSize(20);
   fill(0);
   text("NEXT", 700, 508);
@@ -30,10 +30,6 @@ void h2() {
     numJuego = 1;
     mousePressed = false;
   }
-  //text("NEXT", 700, 565);
-  //if (mousePressed && mouseX>650 && mouseX<750 && mouseY<580 && mouseY>540) { //Botón de NEXT
-  //  numJuego=1;
-  //}
 }
 void menu() {
   background(menu);
@@ -41,12 +37,13 @@ void menu() {
   textSize(20);
   stroke(0);  
   fill(#FEFF0F);
-  rect(350, 352, 100, 40, 7); //Cuadro RESET
+  rect(350, 352, 100, 40, 7); 
   fill(0);
   textAlign(CENTER);
   text("PLAY", 400, 380);
-  if (mousePressed && mouseX>350 && mouseX<450 && mouseY<392 && mouseY>352) { //Botón de reinicio
+  if (mousePressed && mouseX>350 && mouseX<450 && mouseY<392 && mouseY>352) { //Botón de PLAY
     numJuego=2;
+    mousePressed = false;
   }
   /* fill(#FFC00F);
    rect((width/2)-70, (height/2)+102, 140, 40, 7); //Cuadro RESET
@@ -63,6 +60,7 @@ void menu() {
   text("CREDITS", 400, 490);
   if (mousePressed && mouseX>350 && mouseX<450 && mouseY<502 && mouseY>462) { //Botón de reinicio
     numJuego=6;
+    mousePressed = false;
   }
   image(c1, 20, 510);
   image(c2, 120, 510);
@@ -83,7 +81,7 @@ void juegoprin() {
     Obstaculo o = llamitasP.get(j);
     o.move();
     o.dibujar();
-    //o.hit(principal);
+    o.hit(principal);
   }
   if (random(30)<10 && frameCount % 60==0) {
     llamitasP.add(new Obstaculo ());
@@ -92,8 +90,6 @@ void juegoprin() {
   principal.dibujar();
   principal.jump();
   principal.land();
-
-
   x = 0;
 }
 void jugando() {
@@ -131,7 +127,7 @@ void gameover(mini osoMuerto) {
   background(fondogo);
   textAlign(CENTER);
   textSize(20);
-  stroke(0);  //Se dibujan los botones y los cuadros que se encuentran en la interfaz
+  stroke(0);  
   fill(255);
   square(280, 320, 200);
   fill(0);
@@ -148,17 +144,20 @@ void gameover(mini osoMuerto) {
   text("NO", 430, 430);
 
   if (mousePressed && mouseX>310 && mouseX<350 && mouseY<470 && mouseY>450) { //Botón de YES
+    principal.reset();
     osoMuerto.center.x=width/2;
     numJuego=2;
     x = 0;
-    principal.reset();
     X = 0;
-    for(int i = 0; i < 7; i++){
+    for (int i = 0; i < 7; i++) {
       llamitas[i].reset();
     }
+    mousePressed = false;
   }
   if (mousePressed && mouseX>410 && mouseX<450 && mouseY<470 && mouseY>450) { //Botón de NO
+    //principal.reset();
     numJuego=1;
+    mousePressed = false;
   }
 }
 void win() {
@@ -175,8 +174,9 @@ void win() {
   textSize(20);
   fill(0);
   text("EXIT", 700, 48);
-  if (mousePressed && mouseX>650 && mouseX<750 && mouseY<60 && mouseY>20) { //Botón de NO
+  if (mousePressed && mouseX>650 && mouseX<750 && mouseY<60 && mouseY>20) { //Botón de EXIT
     numJuego=1;
+    mousePressed = false;
   }
 }
 void keyPressed () {
@@ -194,7 +194,6 @@ void pasar (osop cambio) {
   if (d < rad + cambio.r) { 
     numJuego=3;
   }
-  
 }
 
 void creditos() {
@@ -216,7 +215,8 @@ void creditos() {
   textSize(20);
   fill(0);
   text("EXIT", 650, 515);
-  if (mousePressed && mouseX>600 && mouseX<700 && mouseY<530 && mouseY>490) { //Botón de NO
+  if (mousePressed && mouseX>600 && mouseX<700 && mouseY<530 && mouseY>490) { //Botón de EXIT
     numJuego=1;
+    mousePressed = false;
   }
 }

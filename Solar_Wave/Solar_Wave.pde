@@ -18,16 +18,6 @@ void setup() {
   minim = new Minim(this);
   miMusica = new music(minim);
 
-
-  /*if(numJuego==0){
-   a1.start();
-   }
-   if(numJuego!=0){
-   a1.stop();
-   }*/
-  /*a3.start();
-   a4.start();
-   a5.start();*/
   fondom1 = loadImage("Iglu.png");
   sol = loadImage("sol.png");
   fondogo = loadImage ("fondo game over.png");
@@ -62,11 +52,9 @@ void draw() {
     break;
   case 7:
     h2();
-    // Aquí pondría mi juego 2, si tuviese uno :c
     break;
   case 1:
     menu();
-    //a2.stop();
     break;
   case 2:
     frameRate(60);
@@ -77,8 +65,6 @@ void draw() {
   case 3:
     frameRate(60);
     jugando();
-    // a3.start();
-    //a1.stop();
     break;
   case 4:
     frameRate(60);
@@ -90,7 +76,7 @@ void draw() {
   case 6:
     creditos();
     break;
-    //case 7:
+    //case 8:
     //h2();
     // Aquí pondría mi juego 2, si tuviese uno :c
     //break;

@@ -27,7 +27,6 @@ class Obstaculo {
     float D= dist(pX+R, pY+R, hit.pxo+hit.r, hit.pyo+hit.r);
     if (D < R + hit.r) { 
       numJuego=4;
-      
-    }
+      }
   }
 }
