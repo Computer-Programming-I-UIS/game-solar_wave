@@ -23,22 +23,24 @@ For everyone
 
 ## How to play:
 
+![how](how.PNG)
+
 ## Features:
 
-## Galería
+## Gallery
 - Menu 
 
 ![menu](menu.PNG)
 
-- Juego principal
+- Main game
 
 ![juegop](juegop.png)
 
-- Minijuego 1
+- Mini-game 1
 
 ![mini](mini1.png)
 
-- Minijuego 2
+- Mini-game 2
 
 ## Requirements:
 Download the 'minim' library to live the musical experience of the game.
@@ -47,6 +49,6 @@ Download the 'minim' library to live the musical experience of the game.
 * Type "Minim" in the search engine
 * Install
 
-## Créditos
-1. Orientación en programación: Alex Mantilla (Tutor de Programación).
-2. Contenido musical: Patrick de Arteaga https://patrickdearteaga.com/es/musica-libre-derechos-gratis/lista-completa/
+## Credits
+1. Programming orientation: Alex Mantilla (Programming tutor).
+2. Musical content: Patrick de Arteaga https://patrickdearteaga.com/es/musica-libre-derechos-gratis/lista-completa/
