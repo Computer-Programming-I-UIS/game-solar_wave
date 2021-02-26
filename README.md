@@ -34,7 +34,7 @@ For everyone
 
 ## Trailer and GamPlay
 
-https://youtu.be/<https://www.youtube.com/watch?v=olcmyO09NjY&feature=youtu.be>
+https://youtu.be/olcmyO09NjY
 
 ## Gallery 
 - Menu 
