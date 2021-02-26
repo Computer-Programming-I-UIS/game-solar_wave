@@ -144,6 +144,11 @@ void juegoprin() {
   principal.jump();
   principal.land();
   x = 0;
+  
+  fill(0);
+  text("Fish:"+p, 700, 50);
+  image(pezmin, 600, 20);
+  x = 0;
 }
 void jugando() {
   background(fondom1);
@@ -236,6 +241,7 @@ void win() {
   if (mousePressed && mouseX>650 && mouseX<750 && mouseY<60 && mouseY>20) { //Botón de EXIT
     numJuego=5;
     mousePressed = false;
+     p=p+1;
   }
 }
 void keyPressed () {
@@ -305,5 +311,39 @@ void howtoplay() {
   if (mousePressed && mouseX>680 && mouseX<780 && mouseY<580 && mouseY>530) { //Botón de NEXT
     numJuego=5;
     mousePressed = false;
+  }
+}
+
+void mini2 () {
+  background(iglu);
+
+
+  for (int indice = 0; indice < (cantidadCartas); indice ++) {
+
+    cartas[indice].dibujar();
+    if (cartas[indice].mostrando) {
+      if ( cartaRevelada1 > 8) {
+        cartaRevelada1 = indice;
+      } else if (cartaRevelada1 != indice) {
+        cartaRevelada2 = indice;
+      }
+    }
+
+    if (indice == cartaRevelada2) {
+      //delay(3000);
+    }
+  }
+  if (cartaRevelada2 < 8) {
+    if (cartas[cartaRevelada2].numeroImagen == cartas[cartaRevelada1].numeroImagen) {  // Encontró pareja!
+      cartas[cartaRevelada2].desaparecer = true;
+      cartas[cartaRevelada1].desaparecer = true;
+    } else {
+
+      cartas[cartaRevelada2].mostrando = false;
+      cartas[cartaRevelada1].mostrando = false;
+
+      cartaRevelada2 = 10;
+      cartaRevelada1 = 10;
+    }
   }
 }

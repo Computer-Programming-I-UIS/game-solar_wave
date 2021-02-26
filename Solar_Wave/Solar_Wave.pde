@@ -3,14 +3,20 @@ import ddf.minim.*;
 mini oso;
 osop principal;
 Llamas[] llamitas = new Llamas[1];
+
+int cantidadCartas = 8;
+int numerosAsignados[] = new int[cantidadCartas];
+Cartica[] cartas = new Cartica[cantidadCartas];
+int cartaRevelada1 = 10, cartaRevelada2 = 10;
+
 ArrayList<Obstaculo> llamitasP= new ArrayList<Obstaculo>();
-PImage fondom1, fondop, sol, fondogo, pezg, fondop2, menu, titulo, fondop3, iglu, osop, fondoc, pan, map, c1, c2, p1, p2, /*p3,*/h1, h2, h3;
+PImage fondom1, fondop, sol, fondogo, pezg, fondop2, menu, titulo, fondop3, iglu, osop, fondoc, pan, map, c1, c2, p1, p2, /*p3,*/h1, h2, pezmin,h3;
 int  velocidadOso;
 int numJuego = 0;
 Minim minim;
 music miMusica;
 float x=0;
-int X ;  
+int X,p=0  ;  
 float pxi, pyi=150, rad=290;
 void setup() {
   size(800, 600);
@@ -40,6 +46,7 @@ void setup() {
   h1 = loadImage("h1.png");
   h2 = loadImage("h2.png");
   h3 = loadImage("h3.png");
+  pezmin=loadImage("pezmini.png");
   for ( int i = 0; i <llamitas.length; i++) {
     llamitas[i]= new Llamas(loadImage ("llamitas.png"));
   }
@@ -47,6 +54,55 @@ void setup() {
   velocidadOso=4;
 
   principal = new osop (300, 400);
+  
+  for (int indice2 = 0; indice2 < cantidadCartas; indice2++ ) {
+    numerosAsignados[indice2] = 0;
+  }
+
+  int cantidad, numeroAsignar;
+  println("Inicio");
+  for (int indice = 0; indice < (cantidadCartas/2); indice ++) {
+
+    do {
+      cantidad = 0 ;
+      numeroAsignar = constrain(round(random(0.5, 4.5)), 1, 4);
+      // Verificar que no ha sido asignado
+      for (int indice2 = 0; indice2 < cantidadCartas; indice2++ ) {
+        if (numeroAsignar == numerosAsignados[indice2])
+          cantidad++;
+      }
+    } while (cantidad > 1);
+    println("indice = " + str(indice));
+    //Cartica(int posX, int posY, int ancho, int alto, int numeroImagen)
+    //cartas[indice] = new Cartica(indice*200 + (indice+1)*25, 10, 200, 250, numeroAsignar);
+    cartas[indice] = new Cartica(indice*150 + (indice+1)*40, 40, 150, 200, numeroAsignar);
+    numerosAsignados[indice] = numeroAsignar;
+
+
+    println(numerosAsignados);
+
+
+    do {
+      cantidad = 0 ;
+      numeroAsignar = constrain(round(random(0.5, 4.5)), 1, 4);
+      // Verificar que no ha sido asignado
+      for (int indice2 = 0; indice2 < cantidadCartas; indice2++ ) {
+        if (numeroAsignar == numerosAsignados[indice2])
+          cantidad++;
+      }
+    } while (cantidad > 1);
+
+    //cartas[indice+4] = new Cartica(indice*200 + (indice+1)*25, 300, 200, 250, numeroAsignar);
+    cartas[indice+4] = new Cartica(indice*150 + (indice+1)*40, 320, 150, 200, numeroAsignar);
+    numerosAsignados[indice+4] = numeroAsignar;
+
+    println(numerosAsignados);
+    println(" ");
+  }
+
+  println("Fin");
+
+  
 }
 
 void draw() {
@@ -95,6 +151,9 @@ void draw() {
     //break;
   case 11:
     howtoplay();
+    break;
+    case 12:
+    mini2();
     break;
   default:
 
