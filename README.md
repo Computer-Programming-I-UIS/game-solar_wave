@@ -33,9 +33,9 @@ For everyone
 * In the second minigame you have to match all the cards.
 
 ## Trailer and GamPlay
-https://www.youtube.com/watch?v=olcmyO09NjY&feature=youtu.be
 
-[![Video](https://img.www.youtube.com/vi/olcmyO09NjY.jpg)](https://www.youtube.com/watch?v=olcmyO09NjY&feature=youtu.be)
+https://youtu.be/<https://www.youtube.com/watch?v=olcmyO09NjY&feature=youtu.be>
+
 ## Gallery 
 - Menu 
 
