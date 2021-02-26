@@ -1,5 +1,58 @@
 void h1() {
-  background(#3ACDD3);
+  background(h1);
+  stroke(0);  
+  fill(#FEFF0F);
+  rect(450, 50, 300, 150, 10);
+  rect(680, 530, 100, 40, 7);
+  textSize(15);
+  fill(0);
+  textAlign(LEFT);
+  text("Paco, is a polar bear which is very", 470, 80); 
+  text("happy in his habitat with his", 470, 110);
+  text("family, but he didn't expect human", 470, 140);
+  text("actions be so far...", 470, 170);
+  text("NEXT", 708, 555);
+  if (mousePressed && mouseX>680 && mouseX<780 && mouseY<580 && mouseY>530) { //Botón de NEXT
+    numJuego=1;
+    mousePressed = false;
+  }
+}
+void h2() {
+  background(h2);
+  stroke(0);  
+  fill(#FEFF0F);
+  rect(450, 50, 315, 110, 10);
+  rect(680, 530, 100, 40, 7);
+  textSize(15);
+  fill(0);
+  textAlign(LEFT);
+  text("Therefore, one day the solar radiations", 470, 80);
+  text("aggressively stalked the North Pole...", 470, 110);
+  text("NEXT", 708, 555);
+  if (mousePressed && mouseX>680 && mouseX<780 && mouseY<580 && mouseY>530) { //Botón de NEXT
+    numJuego=2;
+    mousePressed = false;
+  }
+}
+void h3() {
+  background(h3);
+  stroke(0);  
+  fill(#FEFF0F);
+  rect(450, 50, 320, 110, 10);
+  rect(680, 530, 100, 40, 7);
+  textSize(15);
+  fill(0);
+  textAlign(LEFT);
+  text("Forcing Paco to undertake a long journey", 460, 80);
+  text("to save his life for those who could not...", 460, 110);
+  text("NEXT", 708, 555);
+  if (mousePressed && mouseX>680 && mouseX<780 && mouseY<580 && mouseY>530) { //Botón de NEXT
+    numJuego=3;
+    mousePressed = false;
+  }
+}
+void h4() {
+  background(#D6DEFF);
   image(pan, 200, 100);
   fill(255);
   textSize(18);
@@ -8,26 +61,25 @@ void h1() {
   text(" and go to the 'safe place' ", 400, 260);
   stroke(0);  
   fill(#FEFF0F);
-  rect(650, 480, 100, 40, 7);
+  rect(680, 530, 100, 40, 7);
   textSize(20);
   fill(0);
-  text("NEXT", 700, 508);
-  if (mousePressed && mouseX>650 && mouseX<750 && mouseY<520 && mouseY>480) { //Botón de NEXT
-    numJuego=7;
+  text("NEXT", 730, 557);
+  if (mousePressed && mouseX>680 && mouseX<780 && mouseY<580 && mouseY>530) { //Botón de NEXT
+    numJuego=4;
     mousePressed = false;
   }
 }
-void h2() {
-  background(#6DCCFA);
-  image(map, 180, 150);
+void h5() {
+  background(map);
   stroke(0);  
   fill(#FEFF0F);
-  rect(650, 480, 100, 40, 7);
+  rect(680, 530, 100, 40, 7);
   textSize(20);
   fill(0);
-  text("NEXT", 700, 508);
-  if (mousePressed && mouseX>650 && mouseX<750 && mouseY<520 && mouseY>480) { //Botón de NEXT
-    numJuego = 1;
+  text("NEXT", 730, 557);
+  if (mousePressed && mouseX>680 && mouseX<780 && mouseY<580 && mouseY>530) { //Botón de NEXT
+    numJuego=5;
     mousePressed = false;
   }
 }
@@ -42,24 +94,25 @@ void menu() {
   textAlign(CENTER);
   text("PLAY", 400, 380);
   if (mousePressed && mouseX>350 && mouseX<450 && mouseY<392 && mouseY>352) { //Botón de PLAY
-    numJuego=2;
+    numJuego=6;
     mousePressed = false;
   }
-  /* fill(#FFC00F);
-   rect((width/2)-70, (height/2)+102, 140, 40, 7); //Cuadro RESET
-   fill(0);
-   textAlign(CENTER);
-   text("HOW TO PLAY", 400, 430);
-   if (mousePressed && mouseX>735 && mouseX<785 && mouseY<420 && mouseY>370) { //Botón de reinicio
-   numJuego=1;
-   }*/
+  fill(#FFC00F);
+  rect(330, 402, 140, 40, 7); //Cuadro RESET
+  fill(0);
+  textAlign(CENTER);
+  text("HOW TO PLAY", 400, 430);
+  if (mousePressed && mouseX>330 && mouseX<470 && mouseY<442 && mouseY>402) { //Botón de reinicio
+    numJuego=11;
+    mousePressed = false;
+  }
   fill(#FF370F);
   rect(350, 462, 100, 40, 7); 
   fill(0);
   textAlign(CENTER);
   text("CREDITS", 400, 490);
   if (mousePressed && mouseX>350 && mouseX<450 && mouseY<502 && mouseY>462) { //Botón de reinicio
-    numJuego=6;
+    numJuego=10;
     mousePressed = false;
   }
   image(c1, 20, 510);
@@ -100,7 +153,7 @@ void jugando() {
     llamitas[i].display();
     llamitas[i].colision(oso);
     if (llamitas[i].getPeligro()) {//Hubo una colisión
-      numJuego = 4;
+      numJuego = 8;
       oso.setEst(false);
     }
   }
@@ -111,7 +164,7 @@ void jugando() {
   rect(0, 0, s, height/12);
   image(sol, s, 2);
   if (s>=width+20) { //se acaba el tiempo
-    numJuego=5;
+    numJuego=9;
     println("x = " + str(x));
     println("s = " + str(s));
     println("Ya");
@@ -146,7 +199,7 @@ void gameover(mini osoMuerto) {
   if (mousePressed && mouseX>310 && mouseX<350 && mouseY<470 && mouseY>450) { //Botón de YES
     principal.reset();
     osoMuerto.center.x=width/2;
-    numJuego=2;
+    numJuego=6;
     x = 0;
     X = 0;
     for (int i = 0; i < 7; i++) {
@@ -155,8 +208,14 @@ void gameover(mini osoMuerto) {
     mousePressed = false;
   }
   if (mousePressed && mouseX>410 && mouseX<450 && mouseY<470 && mouseY>450) { //Botón de NO
-    //principal.reset();
-    numJuego=1;
+     principal.reset();
+    osoMuerto.center.x=width/2;
+    numJuego=5;
+    x = 0;
+    X = 0;
+    for (int i = 0; i < 7; i++) {
+      llamitas[i].reset();
+    }
     mousePressed = false;
   }
 }
@@ -175,7 +234,7 @@ void win() {
   fill(0);
   text("EXIT", 700, 48);
   if (mousePressed && mouseX>650 && mouseX<750 && mouseY<60 && mouseY>20) { //Botón de EXIT
-    numJuego=1;
+    numJuego=5;
     mousePressed = false;
   }
 }
@@ -192,7 +251,7 @@ void pasar (osop cambio) {
 
   float d= dist(pxi+rad, pyi+rad, cambio.pxo+cambio.r, cambio.pyo+cambio.r);
   if (d < rad + cambio.r) { 
-    numJuego=3;
+    numJuego=7;
   }
 }
 
@@ -216,7 +275,35 @@ void creditos() {
   fill(0);
   text("EXIT", 650, 515);
   if (mousePressed && mouseX>600 && mouseX<700 && mouseY<530 && mouseY>490) { //Botón de EXIT
-    numJuego=1;
+    numJuego=5;
+    mousePressed = false;
+  }
+}
+void howtoplay() {
+  background(0);
+  image(p1, 40, 40);
+  fill(255);
+  textSize(20);
+  textAlign(LEFT);
+  text("PRESS SPACE TO JUMP AND DODGE", 350, 80);
+  text("THE FLAMES", 350, 100);
+  image(p2, 500, 220);
+  textAlign(LEFT);
+  text("MOVE WITH THE ARROWS OF THE KEYBOARD", 40, 260);
+  text("FROM RIGHT TO LEFT TO DODGE", 40, 280);
+  text("THE FLAMES", 40, 300);
+  //image(p3,40,440);
+  textAlign(LEFT);
+  text("CLICK OVER THE CARDS AND FIND", 350, 440);
+  text("THE COUPLE", 350, 460);
+  stroke(0);  
+  fill(#FEFF0F);
+  rect(680, 530, 100, 40, 7);
+  textSize(20);
+  fill(0);
+  text("EXIT", 708, 557);
+  if (mousePressed && mouseX>680 && mouseX<780 && mouseY<580 && mouseY>530) { //Botón de NEXT
+    numJuego=5;
     mousePressed = false;
   }
 }

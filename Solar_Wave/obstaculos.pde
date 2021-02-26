@@ -26,7 +26,7 @@ class Obstaculo {
   void hit(osop hit) {
     float D= dist(pX+R, pY+R, hit.pxo+hit.r, hit.pyo+hit.r);
     if (D < R + hit.r) { 
-      numJuego=4;
+      numJuego=8;
       }
   }
 }

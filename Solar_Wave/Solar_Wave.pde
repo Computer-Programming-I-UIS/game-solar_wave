@@ -2,9 +2,9 @@ import ddf.minim.*;
 //Juego xd
 mini oso;
 osop principal;
-Llamas[] llamitas = new Llamas[7];
+Llamas[] llamitas = new Llamas[1];
 ArrayList<Obstaculo> llamitasP= new ArrayList<Obstaculo>();
-PImage fondom1, fondop, sol, fondogo, pezg, fondop2, menu, titulo, fondop3, iglu, osop, fondoc, pan, map, c1, c2;
+PImage fondom1, fondop, sol, fondogo, pezg, fondop2, menu, titulo, fondop3, iglu, osop, fondoc, pan, map, c1, c2, p1, p2, /*p3,*/h1, h2, h3;
 int  velocidadOso;
 int numJuego = 0;
 Minim minim;
@@ -22,18 +22,24 @@ void setup() {
   sol = loadImage("sol.png");
   fondogo = loadImage ("fondo game over.png");
   pezg = loadImage("pez gana.png");
-  fondop= loadImage("fondoj-1.png");
-  fondop2=loadImage("fondoj-2.png");
-  fondop3=loadImage("fondoj-3.png");
-  menu= loadImage("fmenu.png");
+  fondop = loadImage("fondoj-1.png");
+  fondop2 = loadImage("fondoj-2.png");
+  fondop3 = loadImage("fondoj-3.png");
+  menu = loadImage("fmenu.png");
   titulo = loadImage("swave.png");
-  iglu=loadImage("iglujuego.png");
+  iglu = loadImage("iglujuego.png");
   osop = loadImage("Oso prin00.png");
   fondoc = loadImage ("Fondop.png");
   pan = loadImage("pantallita.png");
-  map=loadImage("mapita.png");
-  c1=loadImage("pegi3.png");
-  c2=loadImage("pegit.png");
+  map = loadImage("mapa.png");
+  c1 = loadImage("pegi3.png");
+  c2 = loadImage("pegit.png");
+  p1 = loadImage("p1.png");
+  p2 = loadImage("p2.png");
+  //p3 = loadImage("p3.png");
+  h1 = loadImage("h1.png");
+  h2 = loadImage("h2.png");
+  h3 = loadImage("h3.png");
   for ( int i = 0; i <llamitas.length; i++) {
     llamitas[i]= new Llamas(loadImage ("llamitas.png"));
   }
@@ -50,36 +56,46 @@ void draw() {
   case 0:
     h1();
     break;
-  case 7:
+  case 1:
     h2();
     break;
-  case 1:
+  case 2: 
+    h3();
+    break;
+  case 3: 
+    h4();
+    break;
+  case 4:
+    h5();
+    break;
+  case 5:
     menu();
     break;
-  case 2:
+  case 6:
     frameRate(60);
     juegoprin();
-    //  text("Fish",750,100);
-    //p=round(puntaje+=0.1);
     break;
-  case 3:
+  case 7:
     frameRate(60);
     jugando();
     break;
-  case 4:
+  case 8:
     frameRate(60);
     gameover(oso);
     break;
-  case 5: 
+  case 9: 
     win();
     break;
-  case 6:
+  case 10:
     creditos();
     break;
     //case 8:
     //h2();
     // Aquí pondría mi juego 2, si tuviese uno :c
     //break;
+  case 11:
+    howtoplay();
+    break;
   default:
 
     break;
