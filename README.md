@@ -42,6 +42,8 @@ For everyone
 
 - Mini-game 2
 
+![mini2](mini2.png)
+
 ## Requirements:
 Download the 'minim' library to live the musical experience of the game.
 * Open the project in Proccesing
