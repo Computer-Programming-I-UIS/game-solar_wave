@@ -26,6 +26,12 @@ For everyone
 ![how](how.PNG)
 
 ## Features:
+* All the images were made in piskel.
+* When Paco enters the igloo the minigame starts.
+* If you pass the minigame, you will earn a fish.
+* The first minigame has a timer.
+* In the second minigame you have to match all the cards.
+
 
 ## Gallery
 - Menu 
