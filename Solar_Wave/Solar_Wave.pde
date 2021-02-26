@@ -1,5 +1,16 @@
+/*****************************************************
+ ------------------------SOLAR WAVE------------------------
+ Creadoras: Ashely Amaya - 2192294
+            Karen Prada - 2192300
+ 
+ Descripción: El sol ha alcanzado el punto máximo de radiación ultravioleta, provocando graves daños como la destrucción de hábitats 
+ y la extinción de especies, por reacción tardía y desinterés por parte de la raza humana. Paco, el oso polar, es uno de 
+ los pocos supervivientes sobre la faz de la tierra, que encuentra un mapa que te guiará al único "lugar seguro", para ello 
+ debes evitar la radiación (llamas) y enfrentarte a diferentes pruebas (minijuegos ) hasta llegar a su destino.
+ 
+ *Requiere libreria Minim
+*****************************************************/
 import ddf.minim.*;
-//Juego xd
 mini oso;
 osop principal;
 Llamas[] llamitas = new Llamas[7];
@@ -8,11 +19,11 @@ int cantidadCartas = 8;
 int numerosAsignados[] = new int[cantidadCartas];
 Cartica[] cartas = new Cartica[cantidadCartas];
 int cartaRevelada1 = 10, cartaRevelada2 = 10;
-
+int acier=0;
 ArrayList<Obstaculo> llamitasP= new ArrayList<Obstaculo>();
 PImage fondom1, fondop, sol, fondogo, pezg, fondop2, menu, titulo, fondop3, iglu, osop, fondoc, pan, map, c1, c2, p1, p2, p3, h1, h2, pezmin, h3;
 int  velocidadOso;
-int numJuego = 0, nextGame = 7;
+int numJuego = 8, nextGame = 7;
 Minim minim;
 music miMusica;
 float x=0;
@@ -20,7 +31,6 @@ int X, p=0  ;
 float pxi, pyi=150, rad=290;
 void setup() {
   size(800, 600);
-  //frameRate(5);
   minim = new Minim(this);
   miMusica = new music(minim);
 
@@ -73,8 +83,6 @@ void setup() {
       }
     } while (cantidad > 1);
     println("indice = " + str(indice));
-    //Cartica(int posX, int posY, int ancho, int alto, int numeroImagen)
-    //cartas[indice] = new Cartica(indice*200 + (indice+1)*25, 10, 200, 250, numeroAsignar);
     cartas[indice] = new Cartica(indice*150 + (indice+1)*40, 40, 150, 200, numeroAsignar);
     numerosAsignados[indice] = numeroAsignar;
 
@@ -91,8 +99,6 @@ void setup() {
           cantidad++;
       }
     } while (cantidad > 1);
-
-    //cartas[indice+4] = new Cartica(indice*200 + (indice+1)*25, 300, 200, 250, numeroAsignar);
     cartas[indice+4] = new Cartica(indice*150 + (indice+1)*40, 320, 150, 200, numeroAsignar);
     numerosAsignados[indice+4] = numeroAsignar;
 
@@ -107,7 +113,7 @@ void draw() {
 
   miMusica.start();
   switch (numJuego) {
-  case 0:
+  case 0: 
     h1();
     break;
   case 1:

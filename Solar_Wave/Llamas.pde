@@ -31,13 +31,6 @@ class Llamas {
   }
  void display() {
     image(llamitas, x, y);
-   /* noStroke(); //Opcion de borrar
-    ellipseMode(CENTER);
-    if (peligro)
-      fill(#44FAEC);
-    else 
-    noFill();
-    ellipse(x+radio, y+radio, 30, 30);*/
   }
   
   void reset() {

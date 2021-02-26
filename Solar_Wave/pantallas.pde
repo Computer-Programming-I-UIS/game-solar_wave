@@ -119,13 +119,10 @@ void menu() {
   image(c2, 120, 510);
 }
 void juegoprin() {
-  //background(fondop);
   X= constrain(X, 0, 2800);   
   image(fondop, -X, 0);
   X++;
-  //X=frameCount;
   pxi=-X+1600;
-  //println("x = " + str(x));
   image(fondop2, -X+800, 0);
   image(fondop3, -X+1600, 0);
   image(fondop2, -X+2400, 0);
@@ -134,12 +131,12 @@ void juegoprin() {
     Obstaculo o = llamitasP.get(j);
     o.move();
     o.dibujar();
-    //if (o.hit(principal)) {
-    //  for (int i = llamitasP.size()-1; i >=0; i--) {
-    //    llamitasP.remove(i);
-    //  }
-    //  break;
-    //}
+    if (o.hit(principal)) {
+      for (int i = llamitasP.size()-1; i >=0; i--) {
+        llamitasP.remove(i);
+      }
+      break;
+    }
   }
   if (random(30)<10 && frameCount % 60==0) {
     llamitasP.add(new Obstaculo ());
@@ -178,15 +175,12 @@ void jugando() {
   image(sol, s, 2);
   if (s>=width+20) { //se acaba el tiempo
     numJuego=10;
-    println("x = " + str(x));
-    println("s = " + str(s));
-    println("Ya");
   }
   if (s<width+20) {
     oso.mostrar();
     oso.move();
   }
-  //println(oso.est);
+
 }
 
 void gameover(mini osoMuerto) {
@@ -242,11 +236,12 @@ void win(mini osoMuerto) {
   text("a fish", width/2, (height/2)+100);
   stroke(0);  
   fill(#FEFF0F);
-  rect(650, 20, 100, 40, 7);
+  rect(680, 530, 100, 40, 7);
   textSize(20);
   fill(0);
-  text("EXIT", 700, 48);
-  if (mousePressed && mouseX>650 && mouseX<750 && mouseY<60 && mouseY>20) { //Botón de EXIT
+  text("NEXT", 730, 555);
+
+  if (mousePressed && mouseX>680 && mouseX<780 && mouseY<580 && mouseY>530) {//Botón de EXIT
     principal.reset();
     osoMuerto.center.x=width/2;
     numJuego=6;
@@ -260,7 +255,7 @@ void win(mini osoMuerto) {
     }
     mousePressed = false;
     p=p+1;
-    
+
     nextGame ++;
   }
 }
@@ -336,8 +331,6 @@ void howtoplay() {
 
 void mini2 () {
   background(fondom1);
-
-
   for (int indice = 0; indice < (cantidadCartas); indice ++) {
 
     cartas[indice].dibujar();
@@ -350,20 +343,25 @@ void mini2 () {
     }
 
     if (indice == cartaRevelada2) {
-      //delay(3000);
     }
   }
   if (cartaRevelada2 < 8) {
     if (cartas[cartaRevelada2].numeroImagen == cartas[cartaRevelada1].numeroImagen) {  // Encontró pareja!
+      println("cartaRevelada2 es: " + str(cartaRevelada2));
+      println("cartaRevelada1 es: " + str(cartaRevelada1));
       cartas[cartaRevelada2].desaparecer = true;
       cartas[cartaRevelada1].desaparecer = true;
+      acier++;
     } else {
-
-      cartas[cartaRevelada2].mostrando = false;
-      cartas[cartaRevelada1].mostrando = false;
-
-      cartaRevelada2 = 10;
-      cartaRevelada1 = 10;
     }
+    cartas[cartaRevelada2].mostrando = false;
+    cartas[cartaRevelada1].mostrando = false;
+    cartaRevelada2 = 10;
+    cartaRevelada1 = 10;
+  }
+  if (acier==4) {
+    numJuego=10;
+    acier=0;
+    p=p+1;
   }
 }
