@@ -32,8 +32,11 @@ For everyone
 * The first minigame has a timer.
 * In the second minigame you have to match all the cards.
 
+## Trailer and GamPlay
+https://www.youtube.com/watch?v=olcmyO09NjY&feature=youtu.be
 
-## Gallery
+[![Video](https://img.www.youtube.com/vi/olcmyO09NjY.jpg)](https://www.youtube.com/watch?v=olcmyO09NjY&feature=youtu.be)
+## Gallery 
 - Menu 
 
 ![menu](menu.PNG)
