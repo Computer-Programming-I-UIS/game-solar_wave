@@ -2,7 +2,7 @@ import ddf.minim.*;
 //Juego xd
 mini oso;
 osop principal;
-Llamas[] llamitas = new Llamas[1];
+Llamas[] llamitas = new Llamas[7];
 
 int cantidadCartas = 8;
 int numerosAsignados[] = new int[cantidadCartas];
@@ -10,13 +10,13 @@ Cartica[] cartas = new Cartica[cantidadCartas];
 int cartaRevelada1 = 10, cartaRevelada2 = 10;
 
 ArrayList<Obstaculo> llamitasP= new ArrayList<Obstaculo>();
-PImage fondom1, fondop, sol, fondogo, pezg, fondop2, menu, titulo, fondop3, iglu, osop, fondoc, pan, map, c1, c2, p1, p2, /*p3,*/h1, h2, pezmin,h3;
+PImage fondom1, fondop, sol, fondogo, pezg, fondop2, menu, titulo, fondop3, iglu, osop, fondoc, pan, map, c1, c2, p1, p2, p3, h1, h2, pezmin, h3;
 int  velocidadOso;
-int numJuego = 0;
+int numJuego = 0, nextGame = 7;
 Minim minim;
 music miMusica;
 float x=0;
-int X,p=0  ;  
+int X, p=0  ;  
 float pxi, pyi=150, rad=290;
 void setup() {
   size(800, 600);
@@ -42,7 +42,7 @@ void setup() {
   c2 = loadImage("pegit.png");
   p1 = loadImage("p1.png");
   p2 = loadImage("p2.png");
-  //p3 = loadImage("p3.png");
+  p3 = loadImage("p3.png");
   h1 = loadImage("h1.png");
   h2 = loadImage("h2.png");
   h3 = loadImage("h3.png");
@@ -54,7 +54,7 @@ void setup() {
   velocidadOso=4;
 
   principal = new osop (300, 400);
-  
+
   for (int indice2 = 0; indice2 < cantidadCartas; indice2++ ) {
     numerosAsignados[indice2] = 0;
   }
@@ -101,8 +101,6 @@ void setup() {
   }
 
   println("Fin");
-
-  
 }
 
 void draw() {
@@ -136,24 +134,20 @@ void draw() {
     jugando();
     break;
   case 8:
-    frameRate(60);
-    gameover(oso);
+    mini2();   
     break;
   case 9: 
-    win();
+    frameRate(60);
+    gameover(oso);  
     break;
   case 10:
-    creditos();
+    win(oso);   
     break;
-    //case 8:
-    //h2();
-    // Aquí pondría mi juego 2, si tuviese uno :c
-    //break;
   case 11:
-    howtoplay();
+    creditos();  
     break;
-    case 12:
-    mini2();
+  case 12:
+    howtoplay();
     break;
   default:
 

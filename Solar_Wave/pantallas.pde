@@ -93,17 +93,17 @@ void menu() {
   fill(0);
   textAlign(CENTER);
   text("PLAY", 400, 380);
-  if (mousePressed && mouseX>350 && mouseX<450 && mouseY<392 && mouseY>352) { //Botón de PLAY
+  if (mousePressed && mouseX>350 && mouseX<450 && mouseY<392 && mouseY>352) { //Botón PLAY
     numJuego=6;
     mousePressed = false;
   }
   fill(#FFC00F);
-  rect(330, 402, 140, 40, 7); //Cuadro RESET
+  rect(330, 402, 140, 40, 7); 
   fill(0);
   textAlign(CENTER);
   text("HOW TO PLAY", 400, 430);
-  if (mousePressed && mouseX>330 && mouseX<470 && mouseY<442 && mouseY>402) { //Botón de reinicio
-    numJuego=11;
+  if (mousePressed && mouseX>330 && mouseX<470 && mouseY<442 && mouseY>402) { //Botón HOW TO PLAY
+    numJuego=12;
     mousePressed = false;
   }
   fill(#FF370F);
@@ -111,8 +111,8 @@ void menu() {
   fill(0);
   textAlign(CENTER);
   text("CREDITS", 400, 490);
-  if (mousePressed && mouseX>350 && mouseX<450 && mouseY<502 && mouseY>462) { //Botón de reinicio
-    numJuego=10;
+  if (mousePressed && mouseX>350 && mouseX<450 && mouseY<502 && mouseY>462) { //Botón CREDITS
+    numJuego=11;
     mousePressed = false;
   }
   image(c1, 20, 510);
@@ -134,7 +134,12 @@ void juegoprin() {
     Obstaculo o = llamitasP.get(j);
     o.move();
     o.dibujar();
-    o.hit(principal);
+    //if (o.hit(principal)) {
+    //  for (int i = llamitasP.size()-1; i >=0; i--) {
+    //    llamitasP.remove(i);
+    //  }
+    //  break;
+    //}
   }
   if (random(30)<10 && frameCount % 60==0) {
     llamitasP.add(new Obstaculo ());
@@ -144,7 +149,7 @@ void juegoprin() {
   principal.jump();
   principal.land();
   x = 0;
-  
+
   fill(0);
   text("Fish:"+p, 700, 50);
   image(pezmin, 600, 20);
@@ -158,8 +163,11 @@ void jugando() {
     llamitas[i].display();
     llamitas[i].colision(oso);
     if (llamitas[i].getPeligro()) {//Hubo una colisión
-      numJuego = 8;
+      numJuego = 9;
       oso.setEst(false);
+      for (int j = llamitasP.size()-1; j >=0; j--) {
+        llamitasP.remove(j);
+      }
     }
   }
   x+=0.1;
@@ -169,7 +177,7 @@ void jugando() {
   rect(0, 0, s, height/12);
   image(sol, s, 2);
   if (s>=width+20) { //se acaba el tiempo
-    numJuego=9;
+    numJuego=10;
     println("x = " + str(x));
     println("s = " + str(s));
     println("Ya");
@@ -213,7 +221,7 @@ void gameover(mini osoMuerto) {
     mousePressed = false;
   }
   if (mousePressed && mouseX>410 && mouseX<450 && mouseY<470 && mouseY>450) { //Botón de NO
-     principal.reset();
+    principal.reset();
     osoMuerto.center.x=width/2;
     numJuego=5;
     x = 0;
@@ -224,7 +232,7 @@ void gameover(mini osoMuerto) {
     mousePressed = false;
   }
 }
-void win() {
+void win(mini osoMuerto) {
   background(#BADDF2);
   image(pezg, (width/2)-200, (height/2)-300); 
   textSize(50);
@@ -239,9 +247,21 @@ void win() {
   fill(0);
   text("EXIT", 700, 48);
   if (mousePressed && mouseX>650 && mouseX<750 && mouseY<60 && mouseY>20) { //Botón de EXIT
-    numJuego=5;
+    principal.reset();
+    osoMuerto.center.x=width/2;
+    numJuego=6;
+    x = 0;
+    X = 0;
+    for (int i = 0; i < 7; i++) {
+      llamitas[i].reset();
+    }
+    for (int i = llamitasP.size()-1; i >=0; i--) {
+      llamitasP.remove(i);
+    }
     mousePressed = false;
-     p=p+1;
+    p=p+1;
+    
+    nextGame ++;
   }
 }
 void keyPressed () {
@@ -257,7 +277,7 @@ void pasar (osop cambio) {
 
   float d= dist(pxi+rad, pyi+rad, cambio.pxo+cambio.r, cambio.pyo+cambio.r);
   if (d < rad + cambio.r) { 
-    numJuego=7;
+    numJuego = nextGame;
   }
 }
 
@@ -298,7 +318,7 @@ void howtoplay() {
   text("MOVE WITH THE ARROWS OF THE KEYBOARD", 40, 260);
   text("FROM RIGHT TO LEFT TO DODGE", 40, 280);
   text("THE FLAMES", 40, 300);
-  //image(p3,40,440);
+  image(p3, 40, 400);
   textAlign(LEFT);
   text("CLICK OVER THE CARDS AND FIND", 350, 440);
   text("THE COUPLE", 350, 460);
@@ -308,14 +328,14 @@ void howtoplay() {
   textSize(20);
   fill(0);
   text("EXIT", 708, 557);
-  if (mousePressed && mouseX>680 && mouseX<780 && mouseY<580 && mouseY>530) { //Botón de NEXT
+  if (mousePressed && mouseX>680 && mouseX<780 && mouseY<580 && mouseY>530) { //Botón EXIT
     numJuego=5;
     mousePressed = false;
   }
 }
 
 void mini2 () {
-  background(iglu);
+  background(fondom1);
 
 
   for (int indice = 0; indice < (cantidadCartas); indice ++) {
