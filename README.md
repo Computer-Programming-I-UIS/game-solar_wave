@@ -1,5 +1,6 @@
 # Solar Wave
-
+## Banner 
+![solarwave](solarwave.png)
 ## Creadoras:
 
 Ashely Amaya - 2192294
@@ -19,7 +20,8 @@ Para todo público
 
 ![pegit](pegit.png)
 ![pegi3](pegi3.png)
-
+## How to play:
+## Characteritics:
 ## Galería
 - Menu 
 
@@ -33,10 +35,11 @@ Para todo público
 
 ![mini](mini1.png)
 
-## Recomendaciones:
+- Minijuego 2
+
+## Requisitos:
 Descargar la librería 'minim' para vivir la experiencia musical del juego.
 
 ## Créditos
-1. Todo el contenido visual y de programación fue elaborado por las creadoras.
 2. Orientación en programación: Alex Mantilla (Tutor de Programación).
-3. Contenido musical: Patrick de Arteaga patrickdearteaga.com
+3. Contenido musical: Patrick de Arteaga https://patrickdearteaga.com/es/musica-libre-derechos-gratis/lista-completa/
