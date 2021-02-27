@@ -132,12 +132,12 @@ void juegoprin() {
     Obstaculo o = llamitasP.get(j);
     o.move();
     o.dibujar();
-    //if (o.hit(principal)) {
-    //  for (int i = llamitasP.size()-1; i >=0; i--) {
-    //    llamitasP.remove(i);
-    //  }
-    //  break;
-    //}
+    if (o.hit(principal)) {
+      for (int i = llamitasP.size()-1; i >=0; i--) {
+        llamitasP.remove(i);
+      }
+      break;
+    }
   }
   if (random(30)<10 && frameCount % 60==0) {
     llamitasP.add(new Obstaculo ());
@@ -428,7 +428,7 @@ void win2(mini osoMuerto) {
       llamitasP.remove(i);
     }
     mousePressed = false;
-    p=p+1;
+  //  p=p+1;
     //nextGame ++;
   }
 }

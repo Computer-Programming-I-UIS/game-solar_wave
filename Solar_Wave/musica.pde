@@ -14,7 +14,7 @@ class music {
     a5.setGain(-10);
   }
   void start () {
-    if ((numJuego==0 || numJuego==1 || numJuego== 2 || numJuego== 3 || numJuego== 4 || numJuego== 5 || numJuego== 11 || numJuego== 12) && !a1.isPlaying()) { //música pantalla menu
+    if ((numJuego==0 || numJuego==1 || numJuego== 2 || numJuego== 3 || numJuego== 4 || numJuego== 5 || numJuego== 11 || numJuego== 12 || numJuego== 15) && !a1.isPlaying()) { //música pantalla menu
       a1.play();
       a1.rewind();
       if (!a1.isPlaying()) a1.play();
@@ -23,7 +23,7 @@ class music {
       if (a4.isPlaying()) a4.pause();
       if (a5.isPlaying()) a5.pause();
     }
-    if (numJuego==6 && !a2.isPlaying()) { //música juego prin
+    if ((numJuego==6 || numJuego==13) && !a2.isPlaying()) { //música juego prin
       a2.play();
       a2.rewind();
       if (!a2.isPlaying()) a2.play();
@@ -50,7 +50,7 @@ class music {
       if (a3.isPlaying()) a3.pause();
       if (a5.isPlaying()) a5.pause();
     }
-    if (numJuego==10 && !a5.isPlaying()) { //música win
+    if ((numJuego==10 || numJuego==14) && !a5.isPlaying()) { //música win
       a5.play();
       a5.rewind();
       if (!a5.isPlaying()) a5.play();
