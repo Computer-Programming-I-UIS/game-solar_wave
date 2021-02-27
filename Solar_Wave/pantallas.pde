@@ -127,16 +127,17 @@ void juegoprin() {
   image(fondop3, -X+1600, 0);
   image(fondop2, -X+2400, 0);
   image(iglu, pxi, pyi);
+
   for ( int j = llamitasP.size()-1; j >=0; j--) {
     Obstaculo o = llamitasP.get(j);
     o.move();
     o.dibujar();
-    if (o.hit(principal)) {
-      for (int i = llamitasP.size()-1; i >=0; i--) {
-        llamitasP.remove(i);
-      }
-      break;
-    }
+    //if (o.hit(principal)) {
+    //  for (int i = llamitasP.size()-1; i >=0; i--) {
+    //    llamitasP.remove(i);
+    //  }
+    //  break;
+    //}
   }
   if (random(30)<10 && frameCount % 60==0) {
     llamitasP.add(new Obstaculo ());
@@ -180,7 +181,6 @@ void jugando() {
     oso.mostrar();
     oso.move();
   }
-
 }
 
 void gameover(mini osoMuerto) {
@@ -244,7 +244,9 @@ void win(mini osoMuerto) {
   if (mousePressed && mouseX>680 && mouseX<780 && mouseY<580 && mouseY>530) {//Botón de EXIT
     principal.reset();
     osoMuerto.center.x=width/2;
+
     numJuego=6;
+
     x = 0;
     X = 0;
     for (int i = 0; i < 7; i++) {
@@ -255,7 +257,6 @@ void win(mini osoMuerto) {
     }
     mousePressed = false;
     p=p+1;
-
     nextGame ++;
   }
 }
@@ -360,8 +361,93 @@ void mini2 () {
     cartaRevelada1 = 10;
   }
   if (acier==4) {
-    numJuego=10;
+    numJuego=14;
     acier=0;
     p=p+1;
   }
+}
+
+void lastfondo() {
+  X= constrain(X, 0, 2800);   
+  image(fondof1, -X, 0);
+  X++;
+  posiX=-X+2200;
+  image(fondof2, -X+800, 0);
+  image(fondof3, -X+1600, 0);
+  image(fondof2, -X+2400, 0);
+  image(places, posiX, posiY);
+
+  for ( int j = llamitasP.size()-1; j >=0; j--) {
+    Obstaculo o = llamitasP.get(j);
+    o.move();
+    o.dibujar();
+  }
+  if (random(30)<10 && frameCount % 60==0) {
+    llamitasP.add(new Obstaculo ());
+  }
+  pasar2(principal);
+  principal.dibujar();
+  principal.jump();
+  principal.land();
+  x = 0;
+
+  fill(0);
+  text("Fish:"+p, 700, 50);
+  image(pezmin, 600, 20);
+  x = 0;
+}
+
+
+void win2(mini osoMuerto) {
+  background(#BADDF2);
+  image(pezg, (width/2)-200, (height/2)-300); 
+  textSize(50);
+  fill(0);
+  textAlign(CENTER);
+  text("You earned", width/2, (height/2)+50);
+  text("a fish", width/2, (height/2)+100);
+  stroke(0);  
+  fill(#FEFF0F);
+  rect(680, 530, 100, 40, 7);
+  textSize(20);
+  fill(0);
+  text("NEXT", 730, 555);
+
+  if (mousePressed && mouseX>680 && mouseX<780 && mouseY<580 && mouseY>530) {//Botón de EXIT
+    principal.reset();
+    osoMuerto.center.x=width/2;
+
+    numJuego=13;
+
+    x = 0;
+    X = 0;
+    for (int i = 0; i < 7; i++) {
+      llamitas[i].reset();
+    }
+    for (int i = llamitasP.size()-1; i >=0; i--) {
+      llamitasP.remove(i);
+    }
+    mousePressed = false;
+    p=p+1;
+    //nextGame ++;
+  }
+}
+
+void pasar2 (osop camb) {
+
+  float di= dist(posiX+radiop, posiY+radiop, camb.pxo+camb.r, camb.pyo+camb.r);
+  if (di < radiop + camb.r) { 
+    numJuego=15;
+  }
+}
+
+void fin() {
+  image(pacofin, 0, 0);
+  fill(#58DB9B);
+  rect(400, 140, 300, 130, 7);
+  textSize(25);
+  fill(0);
+  textAlign(CENTER);
+  text("Congrats! ", 550, 190);
+  text("Paco is safe now", 550, 220);
 }

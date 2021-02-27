@@ -1,7 +1,7 @@
 /*****************************************************
  ------------------------SOLAR WAVE------------------------
  Creadoras: Ashely Amaya - 2192294
-            Karen Prada - 2192300
+ Karen Prada - 2192300
  
  Descripción: El sol ha alcanzado el punto máximo de radiación ultravioleta, provocando graves daños como la destrucción de hábitats 
  y la extinción de especies, por reacción tardía y desinterés por parte de la raza humana. Paco, el oso polar, es uno de 
@@ -9,7 +9,7 @@
  debes evitar la radiación (llamas) y enfrentarte a diferentes pruebas (minijuegos ) hasta llegar a su destino.
  
  *Requiere libreria Minim
-*****************************************************/
+ *****************************************************/
 import ddf.minim.*;
 mini oso;
 osop principal;
@@ -21,14 +21,14 @@ Cartica[] cartas = new Cartica[cantidadCartas];
 int cartaRevelada1 = 10, cartaRevelada2 = 10;
 int acier=0;
 ArrayList<Obstaculo> llamitasP= new ArrayList<Obstaculo>();
-PImage fondom1, fondop, sol, fondogo, pezg, fondop2, menu, titulo, fondop3, iglu, osop, fondoc, pan, map, c1, c2, p1, p2, p3, h1, h2, pezmin, h3;
+PImage fondom1, fondop, sol, fondogo, pezg, fondop2, menu, titulo, fondop3, iglu, osop, fondoc, pan, map, c1, c2, p1, p2, p3, h1, h2, pezmin, h3, fondof1, fondof2, fondof3,pacofin,places;
 int  velocidadOso;
-int numJuego = 8, nextGame = 7;
+int numJuego, nextGame = 7;
 Minim minim;
 music miMusica;
 float x=0;
 int X, p=0  ;  
-float pxi, pyi=150, rad=290;
+float pxi, pyi=150, rad=290, radiop=120, posiX,posiY=500;
 void setup() {
   size(800, 600);
   minim = new Minim(this);
@@ -57,6 +57,11 @@ void setup() {
   h2 = loadImage("h2.png");
   h3 = loadImage("h3.png");
   pezmin=loadImage("pezmini.png");
+  fondof1=loadImage("fondofin1.jpeg");
+  fondof2=loadImage("fondofin2.jpeg");
+  fondof3=loadImage("fondofin3.jpeg");
+  pacofin=loadImage("pacoasalvo.png");
+places=loadImage("places.png");
   for ( int i = 0; i <llamitas.length; i++) {
     llamitas[i]= new Llamas(loadImage ("llamitas.png"));
   }
@@ -154,6 +159,15 @@ void draw() {
     break;
   case 12:
     howtoplay();
+    break;
+  case 13:
+    lastfondo();
+    break;
+  case 14:
+    win2(oso);
+    break;
+    case 15:
+    fin();
     break;
   default:
 
