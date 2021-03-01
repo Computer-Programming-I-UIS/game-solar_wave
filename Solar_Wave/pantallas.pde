@@ -285,10 +285,10 @@ void creditos() {
   fill(0);
   textSize(30);
   textAlign(CENTER);
-  text("CREADORAS", 400, 200);
+  text("CREATORS", 400, 200);
   text("Ashely Amaya", 400, 240);
   text("Karen Prada", 400, 280);
-  text("MÚSICA", 400, 380);
+  text("MUSIC", 400, 380);
   text("Patrick de Arteaga", 400, 420);
   stroke(0);  
   fill(#FEFF0F);
