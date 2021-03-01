@@ -381,6 +381,12 @@ void lastfondo() {
     Obstaculo o = llamitasP.get(j);
     o.move();
     o.dibujar();
+     if (o.hit(principal)) {
+      for (int i = llamitasP.size()-1; i >=0; i--) {
+        llamitasP.remove(i);
+      }
+      break;
+    }
   }
   if (random(30)<10 && frameCount % 60==0) {
     llamitasP.add(new Obstaculo ());
